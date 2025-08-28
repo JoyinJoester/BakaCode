@@ -6,11 +6,11 @@
 
 **🌍 [中文](./README.zh-CN.md) | [日本語](./README.ja.md) | [Tiếng Việt](./README.vi.md)**
 
-BakaCode is a powerful Node.js CLI AI Agent that supports tool calling, multi-turn conversations, and context memory. It features Claude Code's high-quality prompt system for exceptional AI interaction experiences.
+BakaCode is a powerful Node.js CLI AI Agent that supports tool calling, multi-turn conversations, and context memory. It features an advanced built-in prompt system for exceptional AI interaction experiences.
 
 ## ✨ Core Features
 
-- 🧠 **Claude-style AI Interaction** - Powered by Claude Code's native prompt system for high-quality AI responses
+- 🧠 **Enhanced AI Interaction** - Powered by advanced built-in prompt system for high-quality AI responses
 - 🤖 **Multi-AI Provider Support** - Compatible with Ollama local models, OpenAI, and compatible APIs
 - 🛠️ **Powerful Tool System** - Built-in file operations, shell commands, HTTP requests, web search, and more
 - 💾 **Smart Context Memory** - Multi-turn conversations with persistent session storage
@@ -173,7 +173,7 @@ bakac config get provider.model
 
 # Prompt configuration (Claude-style)
 bakac config prompt --show          # View current prompt configuration
-bakac config prompt --claude        # Enable Claude-style prompts (default)
+bakac config prompt --enhanced       # Enable enhanced prompts (default)
 bakac config prompt --default       # Use traditional BakaCode prompts
 bakac config prompt --file <path>   # Use custom prompt file
 ```
@@ -359,5 +359,5 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## 🙏 Acknowledgments
 
 - Inspired by [Claude Code](https://claude.ai/code) and [google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli)
-- Powered by Claude Code's native prompt system for exceptional AI interaction experiences
+- Powered by advanced built-in prompt system for exceptional AI interaction experiences
 - Thanks to all open source contributors and community support

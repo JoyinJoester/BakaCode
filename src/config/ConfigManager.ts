@@ -47,7 +47,7 @@ export class ConfigManager {
       },
       system: {
         promptFile: process.env.BAKACODE_SYSTEM_PROMPT_FILE,
-        useClaudeStyle: process.env.BAKACODE_USE_CLAUDE_STYLE !== 'false' // 默认为true，除非明确设为false
+        useEnhancedPrompt: process.env.BAKACODE_USE_ENHANCED_PROMPT !== 'false' // 默认为true，除非明确设为false
       },
       locale: process.env.BAKACODE_LOCALE || this.detectSystemLocale()
     };

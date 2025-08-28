@@ -45,9 +45,9 @@ export class ConfigCommand {
     configCmd
       .command('prompt')
       .description('Configure system prompt settings')
-      .option('--claude', 'Use Claude Code style prompt from claude-code-system-prompt.txt')
+      .option('--enhanced', 'Use enhanced BakaCode prompt (default)')
       .option('--file <path>', 'Use custom prompt file')
-      .option('--default', 'Use default BakaCode prompt')
+      .option('--default', 'Use basic BakaCode prompt')
       .option('--show', 'Show current prompt configuration')
       .action(async (options) => {
         await this.configurePrompt(options);
@@ -113,8 +113,8 @@ export class ConfigCommand {
         const systemConfig = { ...(currentConfig.system || {}) };
         
         switch (parts[1]) {
-          case 'useClaudeStyle':
-            systemConfig.useClaudeStyle = value === 'true';
+          case 'useEnhancedPrompt':
+            systemConfig.useEnhancedPrompt = value === 'true';
             break;
           case 'promptFile':
             systemConfig.promptFile = value || undefined;
@@ -187,11 +187,11 @@ export class ConfigCommand {
       if (systemConfig?.promptFile) {
         console.log(`  mode: Custom file`);
         console.log(`  file: ${systemConfig.promptFile}`);
-      } else if (systemConfig?.useClaudeStyle === false) {
-        console.log(`  mode: Traditional BakaCode prompt`);
+      } else if (systemConfig?.useEnhancedPrompt === false) {
+        console.log(`  mode: Basic BakaCode prompt`);
       } else {
-        console.log(`  mode: Claude Code style (default)`);
-        console.log(`  file: claude-code-system-prompt.txt`);
+        console.log(`  mode: Enhanced BakaCode prompt (default)`);
+        console.log(`  status: Built-in high-quality prompt system`);
       }
       
       console.log('\nMemory:');
@@ -240,29 +240,20 @@ export class ConfigCommand {
           console.log('Current mode: Custom prompt file');
           console.log(`Prompt file: ${systemConfig.promptFile}`);
           console.log(`File exists: ${fs.existsSync(systemConfig.promptFile) ? 'Yes' : 'No'}`);
-        } else if (systemConfig?.useClaudeStyle === false) {
-          console.log('Current mode: Traditional BakaCode prompt');
+        } else if (systemConfig?.useEnhancedPrompt === false) {
+          console.log('Current mode: Basic BakaCode prompt');
         } else {
-          console.log('Current mode: Claude Code style (default)');
-          const promptFile = path.resolve(process.cwd(), 'claude-code-system-prompt.txt');
-          console.log(`Prompt file: ${promptFile}`);
-          console.log(`File exists: ${fs.existsSync(promptFile) ? 'Yes' : 'No'}`);
+          console.log('Current mode: Enhanced BakaCode prompt (default)');
+          console.log(`Status: Built-in high-quality prompt system`);
         }
         return;
       }
 
-      if (options.claude) {
-        const promptFile = path.resolve(process.cwd(), 'claude-code-system-prompt.txt');
-        if (!fs.existsSync(promptFile)) {
-          logger.error(`Claude prompt file not found: ${promptFile}`);
-          logger.info('Please ensure claude-code-system-prompt.txt exists in the project root directory.');
-          return;
-        }
-        
-        await this.set('system.useClaudeStyle', 'true');
+      if (options.enhanced) {
+        await this.set('system.useEnhancedPrompt', 'true');
         await this.set('system.promptFile', '');
-        console.log('✅ Configured to use Claude Code style prompt');
-        console.log(`📄 Using prompt file: ${promptFile}`);
+        console.log('✅ Configured to use Enhanced BakaCode prompt');
+        console.log(`📄 Using built-in high-quality prompt system`);
         
       } else if (options.file) {
         const customFile = path.resolve(options.file);
@@ -271,24 +262,24 @@ export class ConfigCommand {
           return;
         }
         
-        await this.set('system.useClaudeStyle', 'false');
+        await this.set('system.useEnhancedPrompt', 'false');
         await this.set('system.promptFile', customFile);
         console.log('✅ Configured to use custom prompt file');
         console.log(`📄 Using prompt file: ${customFile}`);
         
       } else if (options.default) {
-        await this.set('system.useClaudeStyle', 'false');
+        await this.set('system.useEnhancedPrompt', 'false');
         await this.set('system.promptFile', '');
-        console.log('✅ Configured to use default BakaCode prompt');
+        console.log('✅ Configured to use basic BakaCode prompt');
         
       } else {
         console.log('\nSystem Prompt Configuration Options:\n');
-        console.log('  --claude     Use Claude Code style prompt (requires claude-code-system-prompt.txt)');
+        console.log('  --enhanced   Use enhanced BakaCode prompt (default)');
         console.log('  --file PATH  Use custom prompt file');
-        console.log('  --default    Use default BakaCode prompt');
+        console.log('  --default    Use basic BakaCode prompt');
         console.log('  --show       Show current prompt configuration');
         console.log('\nExamples:');
-        console.log('  bakac config prompt --claude');
+        console.log('  bakac config prompt --enhanced');
         console.log('  bakac config prompt --file ./my-custom-prompt.txt');
         console.log('  bakac config prompt --default');
         console.log('  bakac config prompt --show');

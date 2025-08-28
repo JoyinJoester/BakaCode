@@ -69,7 +69,7 @@ export interface AgentConfig {
   };
   system?: {
     promptFile?: string;
-    useClaudeStyle?: boolean;
+    useEnhancedPrompt?: boolean;
   };
   locale?: string;
 }
