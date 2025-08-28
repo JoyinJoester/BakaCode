@@ -1,0 +1,115 @@
+{
+  "common": {
+    "success": "Success",
+    "error": "Error", 
+    "warning": "Warning",
+    "info": "Info",
+    "yes": "Yes",
+    "no": "No",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "loading": "Loading...",
+    "done": "Done"
+  },
+  "cli": {
+    "app_description": "BakaCode - A powerful Node.js CLI AI Agent",
+    "chat_description": "Start an interactive chat session",
+    "run_description": "Run a single task", 
+    "websearch_description": "Search the web using Bing API",
+    "config_description": "Manage configuration settings",
+    "version_description": "Show version information"
+  },
+  "chat": {
+    "session_started": "Chat session started. Type \"exit\" to quit, \"help\" for commands.",
+    "session_ended": "Chat session ended.",
+    "prompt": "You:",
+    "assistant": "Assistant:",
+    "help_title": "Available commands:",
+    "help_exit": "exit - Exit the chat session",
+    "help_clear": "clear - Clear the screen", 
+    "help_conversations": "/conversations list - List all conversations",
+    "help_conversations_delete": "/conversations delete <id> - Delete a conversation",
+    "help_conversations_switch": "/conversations switch <id> - Switch to a conversation",
+    "enter_message": "Please enter a message",
+    "conversation_loaded": "Loaded conversation: {{id}}",
+    "conversation_created": "Started new conversation: {{id}}",
+    "using_provider": "Using {{provider}} with model {{model}}"
+  },
+  "config": {
+    "updated": "Updated {{key}} to {{value}}",
+    "bing_key_updated": "Bing API key updated",
+    "provider_type_invalid": "Provider type must be \"ollama\" or \"openai\"",
+    "unknown_key": "Unknown configuration key: {{key}}",
+    "unknown_provider_key": "Unknown provider config key: {{key}}",
+    "failed_to_set": "Failed to set configuration: {{error}}",
+    "failed_to_get": "Failed to get configuration: {{error}}",
+    "failed_to_show": "Failed to show configuration: {{error}}",
+    "reset_not_implemented": "Configuration reset is not yet implemented.",
+    "reset_instruction": "To reset configuration, delete the config file at ~/.bakacode/config.yaml",
+    "show_title": "--- Configuration ---",
+    "provider_section": "Provider:",
+    "memory_section": "Memory:",
+    "security_section": "Security:",
+    "environment_section": "Environment:",
+    "not_set": "Not set",
+    "hidden": "[HIDDEN]"
+  },
+  "task": {
+    "executing": "Executing task: {{task}}",
+    "completed": "Task completed successfully.",
+    "failed": "Failed to execute task: {{error}}",
+    "task_required": "Task description is required. Use --task option.",
+    "executing_tools": "[Executing tools...]"
+  },
+  "search": {
+    "searching": "Searching for: {{query}}",
+    "failed": "Search failed: {{error}}",
+    "completed": "Search completed successfully.",
+    "bing_key_required": "Bing API key is not configured. Please set BING_API_KEY environment variable.",
+    "generating_summary": "Generating AI summary...",
+    "ai_summary_title": "--- AI Summary ---",
+    "found_results": "Found {{count}} results for \"{{query}}\":",
+    "related_searches": "Related searches:"
+  },
+  "memory": {
+    "conversation_not_found": "Conversation not found: {{id}}",
+    "failed_to_load": "Failed to load memory from file: {{error}}",
+    "failed_to_save": "Failed to save memory to file: {{error}}"
+  },
+  "provider": {
+    "api_key_required": "{{provider}} API key is required",
+    "api_error": "{{provider}} API error: {{error}}",
+    "streaming_error": "{{provider}} streaming error: {{error}}"
+  },
+  "tools": {
+    "command_blocked": "Command blocked for security reasons: {{command}}",
+    "access_denied": "Access denied: Path {{path}} is not in allowed directories",
+    "file_not_found": "File does not exist: {{path}}",
+    "directory_not_found": "Directory does not exist: {{path}}",
+    "not_directory": "Path is not a directory: {{path}}",
+    "content_required": "Content is required for write action",
+    "file_written": "File written successfully: {{path}}",
+    "deleted_successfully": "Deleted successfully: {{path}}",
+    "directory_created": "Directory created: {{path}}",
+    "unsupported_action": "Unsupported file action: {{action}}",
+    "tool_not_found": "Tool not found: {{name}}",
+    "command_timeout": "Command timed out after {{timeout}}ms",
+    "local_network_blocked": "Access to local/private networks is blocked"
+  },
+  "ui": {
+    "tips_header": "Tips for getting started:",
+    "tip_1": "Ask questions, edit files, or run commands.",
+    "tip_2": "Be specific for the best results.",
+    "tip_3": "Type /help for more information.",
+    "tip_4": "Press Ctrl+C twice to exit.",
+    "start_chatting": "Start chatting (type a message or command):"
+  },
+  "errors": {
+    "unhandled_rejection": "Unhandled promise rejection:",
+    "uncaught_exception": "Uncaught exception:",
+    "validation_error": "Validation error",
+    "config_error": "Configuration error",
+    "provider_error": "Provider error",
+    "tool_error": "Tool error"
+  }
+}

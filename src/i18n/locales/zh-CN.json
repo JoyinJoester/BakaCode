@@ -1,0 +1,115 @@
+{
+  "common": {
+    "success": "成功",
+    "error": "错误", 
+    "warning": "警告",
+    "info": "信息",
+    "yes": "是",
+    "no": "否",
+    "cancel": "取消",
+    "confirm": "确认",
+    "loading": "加载中...",
+    "done": "完成"
+  },
+  "cli": {
+    "app_description": "BakaCode - 强大的 Node.js CLI AI 智能体",
+    "chat_description": "开始交互式聊天会话",
+    "run_description": "执行单个任务", 
+    "websearch_description": "使用 Bing API 搜索网络",
+    "config_description": "管理配置设置",
+    "version_description": "显示版本信息"
+  },
+  "chat": {
+    "session_started": "聊天会话已开始。输入 \"exit\" 退出，\"help\" 查看命令。",
+    "session_ended": "聊天会话已结束。",
+    "prompt": "你:",
+    "assistant": "助手:",
+    "help_title": "可用命令:",
+    "help_exit": "exit - 退出聊天会话",
+    "help_clear": "clear - 清屏", 
+    "help_conversations": "/conversations list - 列出所有对话",
+    "help_conversations_delete": "/conversations delete <id> - 删除对话",
+    "help_conversations_switch": "/conversations switch <id> - 切换到对话",
+    "enter_message": "请输入消息",
+    "conversation_loaded": "已加载对话: {{id}}",
+    "conversation_created": "已开始新对话: {{id}}",
+    "using_provider": "使用 {{provider}} 提供商，模型 {{model}}"
+  },
+  "config": {
+    "updated": "已更新 {{key}} 为 {{value}}",
+    "bing_key_updated": "Bing API 密钥已更新",
+    "provider_type_invalid": "提供商类型必须是 \"ollama\" 或 \"openai\"",
+    "unknown_key": "未知的配置键: {{key}}",
+    "unknown_provider_key": "未知的提供商配置键: {{key}}",
+    "failed_to_set": "设置配置失败: {{error}}",
+    "failed_to_get": "获取配置失败: {{error}}",
+    "failed_to_show": "显示配置失败: {{error}}",
+    "reset_not_implemented": "配置重置尚未实现。",
+    "reset_instruction": "要重置配置，请删除配置文件 ~/.bakacode/config.yaml",
+    "show_title": "--- 配置信息 ---",
+    "provider_section": "提供商:",
+    "memory_section": "记忆:",
+    "security_section": "安全:",
+    "environment_section": "环境:",
+    "not_set": "未设置",
+    "hidden": "[已隐藏]"
+  },
+  "task": {
+    "executing": "正在执行任务: {{task}}",
+    "completed": "任务执行成功。",
+    "failed": "任务执行失败: {{error}}",
+    "task_required": "需要任务描述。请使用 --task 选项。",
+    "executing_tools": "[正在执行工具...]"
+  },
+  "search": {
+    "searching": "正在搜索: {{query}}",
+    "failed": "搜索失败: {{error}}",
+    "completed": "搜索完成。",
+    "bing_key_required": "未配置 Bing API 密钥。请设置 BING_API_KEY 环境变量。",
+    "generating_summary": "正在生成 AI 摘要...",
+    "ai_summary_title": "--- AI 摘要 ---",
+    "found_results": "为 \"{{query}}\" 找到 {{count}} 个结果:",
+    "related_searches": "相关搜索:"
+  },
+  "memory": {
+    "conversation_not_found": "未找到对话: {{id}}",
+    "failed_to_load": "从文件加载记忆失败: {{error}}",
+    "failed_to_save": "保存记忆到文件失败: {{error}}"
+  },
+  "provider": {
+    "api_key_required": "需要 {{provider}} API 密钥",
+    "api_error": "{{provider}} API 错误: {{error}}",
+    "streaming_error": "{{provider}} 流式传输错误: {{error}}"
+  },
+  "tools": {
+    "command_blocked": "出于安全考虑，命令被阻止: {{command}}",
+    "access_denied": "访问拒绝: 路径 {{path}} 不在允许的目录中",
+    "file_not_found": "文件不存在: {{path}}",
+    "directory_not_found": "目录不存在: {{path}}",
+    "not_directory": "路径不是目录: {{path}}",
+    "content_required": "写入操作需要内容",
+    "file_written": "文件写入成功: {{path}}",
+    "deleted_successfully": "删除成功: {{path}}",
+    "directory_created": "目录创建成功: {{path}}",
+    "unsupported_action": "不支持的文件操作: {{action}}",
+    "tool_not_found": "未找到工具: {{name}}",
+    "command_timeout": "命令超时 {{timeout}}ms",
+    "local_network_blocked": "禁止访问本地/私有网络"
+  },
+  "ui": {
+    "tips_header": "使用技巧：",
+    "tip_1": "提出问题、编辑文件或运行命令",
+    "tip_2": "描述得越具体，效果越好",
+    "tip_3": "输入 /help 获取更多信息",
+    "tip_4": "按 Ctrl+C 两次退出",
+    "start_chatting": "开始聊天（输入消息或命令）："
+  },
+  "errors": {
+    "unhandled_rejection": "未处理的 Promise 拒绝:",
+    "uncaught_exception": "未捕获的异常:",
+    "validation_error": "验证错误",
+    "config_error": "配置错误", 
+    "provider_error": "提供商错误",
+    "tool_error": "工具错误"
+  }
+}

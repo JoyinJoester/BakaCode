@@ -1,0 +1,131 @@
+{
+  "common": {
+    "yes": "예",
+    "no": "아니오",
+    "cancel": "취소",
+    "continue": "계속",
+    "exit": "종료",
+    "info": "정보",
+    "warning": "경고",
+    "error": "오류",
+    "success": "성공",
+    "failed": "실패",
+    "loading": "로딩 중...",
+    "done": "완료",
+    "please_wait": "잠시 기다려 주세요..."
+  },
+  "cli": {
+    "app_description": "AI 기반 코딩 어시스턴트",
+    "chat_description": "AI와 대화 세션 시작",
+    "config_description": "설정 보기 또는 편집",
+    "run_description": "지정된 작업 실행",
+    "websearch_description": "웹 검색 수행",
+    "language_changed": "언어가 {{language}}로 변경되었습니다",
+    "invalid_language": "잘못된 언어 코드: {{code}}. 지원되는 언어: {{supported}}",
+    "current_language": "현재 언어: {{language}} ({{code}})",
+    "available_languages": "사용 가능한 언어:",
+    "language_code": "언어 코드",
+    "language_name": "언어 이름",
+    "native_name": "현지 이름"
+  },
+  "chat": {
+    "welcome": "BakaCode에 오신 것을 환영합니다! 무엇을 도와드릴까요?",
+    "goodbye": "안녕히 가세요!",
+    "thinking": "생각 중...",
+    "response_error": "응답 생성 중 오류가 발생했습니다",
+    "session_ended": "채팅 세션이 종료되었습니다",
+    "invalid_command": "잘못된 명령입니다. /help로 도움말을 확인하세요",
+    "help_commands": "사용 가능한 명령:",
+    "help_exit": "채팅 종료",
+    "help_clear": "화면 지우기",
+    "help_config": "현재 설정 표시",
+    "help_provider": "제공자 설정 표시",
+    "help_model": "현재 모델 표시",
+    "user_input": "사용자",
+    "assistant_response": "어시스턴트",
+    "no_response": "응답이 없습니다",
+    "streaming_error": "스트리밍 중 오류가 발생했습니다"
+  },
+  "config": {
+    "current_config": "현재 설정:",
+    "no_config": "설정을 찾을 수 없습니다",
+    "config_saved": "설정이 저장되었습니다",
+    "config_updated": "설정이 업데이트되었습니다: {{key}} = {{value}}",
+    "config_deleted": "설정이 삭제되었습니다: {{key}}",
+    "invalid_key": "잘못된 설정 키: {{key}}",
+    "provider_config": "제공자 설정:",
+    "provider_type": "제공자 유형",
+    "provider_model": "모델",
+    "provider_api_key": "API 키",
+    "provider_base_url": "기본 URL",
+    "security_config": "보안 설정:",
+    "allowed_directories": "허용된 디렉터리",
+    "blocked_commands": "차단된 명령"
+  },
+  "task": {
+    "running": "작업 실행 중: {{task}}",
+    "completed": "작업 완료: {{task}}",
+    "failed": "작업 실패: {{task}}",
+    "no_task": "실행할 작업이 지정되지 않았습니다",
+    "task_timeout": "작업 시간 초과: {{task}}",
+    "task_cancelled": "작업 취소됨: {{task}}"
+  },
+  "search": {
+    "searching": "검색 중: {{query}}",
+    "search_completed": "검색 완료",
+    "search_failed": "검색 실패",
+    "no_results": "결과를 찾을 수 없습니다",
+    "results_found": "{{count}}개의 결과를 찾았습니다"
+  },
+  "memory": {
+    "loading": "메모리 로딩 중...",
+    "saving": "메모리 저장 중...",
+    "loaded": "메모리가 로드되었습니다",
+    "saved": "메모리가 저장되었습니다",
+    "cleared": "메모리가 지워졌습니다",
+    "not_found": "메모리를 찾을 수 없습니다"
+  },
+  "provider": {
+    "connecting": "{{provider}}에 연결 중...",
+    "connected": "{{provider}}에 연결되었습니다",
+    "disconnected": "{{provider}}에서 연결 해제되었습니다",
+    "connection_failed": "{{provider}} 연결 실패",
+    "invalid_response": "{{provider}}에서 잘못된 응답",
+    "rate_limited": "{{provider}}에서 속도 제한됨",
+    "quota_exceeded": "{{provider}}에서 할당량 초과",
+    "api_key_required": "{{provider}} API 키가 필요합니다",
+    "api_error": "{{provider}} API 오류: {{error}}",
+    "streaming_error": "{{provider}} 스트리밍 오류: {{error}}"
+  },
+  "tools": {
+    "command_blocked": "보안상의 이유로 명령이 차단되었습니다: {{command}}",
+    "access_denied": "액세스 거부: 경로 {{path}}는 허용된 디렉터리에 없습니다",
+    "file_not_found": "파일이 존재하지 않습니다: {{path}}",
+    "directory_not_found": "디렉터리가 존재하지 않습니다: {{path}}",
+    "not_directory": "경로가 디렉터리가 아닙니다: {{path}}",
+    "content_required": "쓰기 작업에는 내용이 필요합니다",
+    "file_written": "파일 쓰기 성공: {{path}}",
+    "deleted_successfully": "삭제 성공: {{path}}",
+    "directory_created": "디렉터리 생성 성공: {{path}}",
+    "unsupported_action": "지원되지 않는 파일 작업: {{action}}",
+    "tool_not_found": "도구를 찾을 수 없습니다: {{name}}",
+    "command_timeout": "명령 시간 초과 {{timeout}}ms",
+    "local_network_blocked": "로컬/프라이빗 네트워크 액세스가 금지됩니다"
+  },
+  "ui": {
+    "tips_header": "시작하기 위한 팁:",
+    "tip_1": "질문하고, 파일을 편집하거나, 명령을 실행하세요.",
+    "tip_2": "구체적으로 설명할수록 더 좋은 결과를 얻을 수 있습니다.",
+    "tip_3": "/help를 입력하여 더 많은 정보를 확인하세요.",
+    "tip_4": "Ctrl+C를 두 번 눌러 종료하세요.",
+    "start_chatting": "채팅 시작 (메시지 또는 명령을 입력하세요):"
+  },
+  "errors": {
+    "unhandled_rejection": "처리되지 않은 Promise 거부:",
+    "uncaught_exception": "잡히지 않은 예외:",
+    "validation_error": "유효성 검사 오류",
+    "config_error": "설정 오류",
+    "provider_error": "제공자 오류",
+    "tool_error": "도구 오류"
+  }
+}

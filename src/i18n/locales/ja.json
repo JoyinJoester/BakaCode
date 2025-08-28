@@ -1,0 +1,131 @@
+{
+  "common": {
+    "yes": "はい",
+    "no": "いいえ",
+    "cancel": "キャンセル",
+    "continue": "続行",
+    "exit": "終了",
+    "info": "情報",
+    "warning": "警告",
+    "error": "エラー",
+    "success": "成功",
+    "failed": "失敗",
+    "loading": "読み込み中...",
+    "done": "完了",
+    "please_wait": "お待ちください..."
+  },
+  "cli": {
+    "app_description": "AIベースのコーディングアシスタント",
+    "chat_description": "AIとの対話セッションを開始",
+    "config_description": "設定を表示または編集",
+    "run_description": "指定されたタスクを実行",
+    "websearch_description": "ウェブ検索を実行",
+    "language_changed": "言語が{{language}}に変更されました",
+    "invalid_language": "無効な言語コード: {{code}}。サポートされている言語: {{supported}}",
+    "current_language": "現在の言語: {{language}} ({{code}})",
+    "available_languages": "利用可能な言語:",
+    "language_code": "言語コード",
+    "language_name": "言語名",
+    "native_name": "現地語名"
+  },
+  "chat": {
+    "welcome": "BakaCodeへようこそ！何をお手伝いしましょうか？",
+    "goodbye": "さようなら！",
+    "thinking": "考え中...",
+    "response_error": "レスポンスの生成中にエラーが発生しました",
+    "session_ended": "チャットセッションが終了しました",
+    "invalid_command": "無効なコマンド。/help でヘルプを表示",
+    "help_commands": "利用可能なコマンド:",
+    "help_exit": "チャットを終了",
+    "help_clear": "画面をクリア",
+    "help_config": "現在の設定を表示",
+    "help_provider": "プロバイダー設定を表示",
+    "help_model": "現在のモデルを表示",
+    "user_input": "ユーザー",
+    "assistant_response": "アシスタント",
+    "no_response": "レスポンスがありません",
+    "streaming_error": "ストリーミング中にエラーが発生しました"
+  },
+  "config": {
+    "current_config": "現在の設定:",
+    "no_config": "設定が見つかりません",
+    "config_saved": "設定が保存されました",
+    "config_updated": "設定が更新されました: {{key}} = {{value}}",
+    "config_deleted": "設定が削除されました: {{key}}",
+    "invalid_key": "無効な設定キー: {{key}}",
+    "provider_config": "プロバイダー設定:",
+    "provider_type": "プロバイダーの種類",
+    "provider_model": "モデル",
+    "provider_api_key": "APIキー",
+    "provider_base_url": "ベースURL",
+    "security_config": "セキュリティ設定:",
+    "allowed_directories": "許可されたディレクトリ",
+    "blocked_commands": "ブロックされたコマンド"
+  },
+  "task": {
+    "running": "タスクを実行中: {{task}}",
+    "completed": "タスクが完了しました: {{task}}",
+    "failed": "タスクが失敗しました: {{task}}",
+    "no_task": "実行するタスクが指定されていません",
+    "task_timeout": "タスクがタイムアウトしました: {{task}}",
+    "task_cancelled": "タスクがキャンセルされました: {{task}}"
+  },
+  "search": {
+    "searching": "検索中: {{query}}",
+    "search_completed": "検索が完了しました",
+    "search_failed": "検索が失敗しました",
+    "no_results": "結果が見つかりませんでした",
+    "results_found": "{{count}}件の結果が見つかりました"
+  },
+  "memory": {
+    "loading": "メモリを読み込み中...",
+    "saving": "メモリを保存中...",
+    "loaded": "メモリが読み込まれました",
+    "saved": "メモリが保存されました",
+    "cleared": "メモリがクリアされました",
+    "not_found": "メモリが見つかりません"
+  },
+  "provider": {
+    "connecting": "{{provider}}に接続中...",
+    "connected": "{{provider}}に接続されました",
+    "disconnected": "{{provider}}から切断されました",
+    "connection_failed": "{{provider}}への接続に失敗しました",
+    "invalid_response": "{{provider}}からの無効なレスポンス",
+    "rate_limited": "{{provider}}でレート制限されました",
+    "quota_exceeded": "{{provider}}でクォータを超過しました",
+    "api_key_required": "{{provider}} APIキーが必要です",
+    "api_error": "{{provider}} APIエラー: {{error}}",
+    "streaming_error": "{{provider}} ストリーミングエラー: {{error}}"
+  },
+  "tools": {
+    "command_blocked": "セキュリティ上の理由でコマンドがブロックされました: {{command}}",
+    "access_denied": "アクセス拒否: パス {{path}} は許可されたディレクトリにありません",
+    "file_not_found": "ファイルが存在しません: {{path}}",
+    "directory_not_found": "ディレクトリが存在しません: {{path}}",
+    "not_directory": "パスはディレクトリではありません: {{path}}",
+    "content_required": "書き込み操作にはコンテンツが必要です",
+    "file_written": "ファイルの書き込みが成功しました: {{path}}",
+    "deleted_successfully": "削除が成功しました: {{path}}",
+    "directory_created": "ディレクトリの作成が成功しました: {{path}}",
+    "unsupported_action": "サポートされていないファイル操作: {{action}}",
+    "tool_not_found": "ツールが見つかりません: {{name}}",
+    "command_timeout": "コマンドがタイムアウトしました {{timeout}}ms",
+    "local_network_blocked": "ローカル/プライベートネットワークへのアクセスは禁止されています"
+  },
+  "ui": {
+    "tips_header": "使い方のヒント：",
+    "tip_1": "質問、ファイル編集、コマンド実行",
+    "tip_2": "具体的に記述すると最良の結果が得られます",
+    "tip_3": "/help でより多くの情報を表示",
+    "tip_4": "Ctrl+C を2回押して終了",
+    "start_chatting": "チャットを開始（メッセージまたはコマンドを入力）："
+  },
+  "errors": {
+    "unhandled_rejection": "未処理のPromise拒否:",
+    "uncaught_exception": "キャッチされない例外:",
+    "validation_error": "検証エラー",
+    "config_error": "設定エラー",
+    "provider_error": "プロバイダーエラー",
+    "tool_error": "ツールエラー"
+  }
+}

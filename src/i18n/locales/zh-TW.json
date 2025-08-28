@@ -1,0 +1,131 @@
+{
+  "common": {
+    "yes": "是",
+    "no": "否",
+    "cancel": "取消",
+    "continue": "繼續",
+    "exit": "退出",
+    "info": "資訊",
+    "warning": "警告",
+    "error": "錯誤",
+    "success": "成功",
+    "failed": "失敗",
+    "loading": "載入中...",
+    "done": "完成",
+    "please_wait": "請稍候..."
+  },
+  "cli": {
+    "app_description": "AI 輔助程式設計助手",
+    "chat_description": "開始與 AI 對話",
+    "config_description": "檢視或編輯設定",
+    "run_description": "執行指定任務",
+    "websearch_description": "執行網路搜尋",
+    "language_changed": "語言已變更為 {{language}}",
+    "invalid_language": "無效的語言代碼: {{code}}。支援的語言: {{supported}}",
+    "current_language": "目前語言: {{language}} ({{code}})",
+    "available_languages": "可用語言:",
+    "language_code": "語言代碼",
+    "language_name": "語言名稱",
+    "native_name": "本地名稱"
+  },
+  "chat": {
+    "welcome": "歡迎使用 BakaCode！我能為您做什麼？",
+    "goodbye": "再見！",
+    "thinking": "思考中...",
+    "response_error": "產生回應時發生錯誤",
+    "session_ended": "對話已結束",
+    "invalid_command": "無效命令。輸入 /help 檢視說明",
+    "help_commands": "可用命令:",
+    "help_exit": "退出對話",
+    "help_clear": "清除螢幕",
+    "help_config": "顯示目前設定",
+    "help_provider": "顯示提供商設定",
+    "help_model": "顯示目前模型",
+    "user_input": "使用者",
+    "assistant_response": "助手",
+    "no_response": "沒有回應",
+    "streaming_error": "串流時發生錯誤"
+  },
+  "config": {
+    "current_config": "目前設定:",
+    "no_config": "找不到設定",
+    "config_saved": "設定已儲存",
+    "config_updated": "設定已更新: {{key}} = {{value}}",
+    "config_deleted": "設定已刪除: {{key}}",
+    "invalid_key": "無效的設定鍵: {{key}}",
+    "provider_config": "提供商設定:",
+    "provider_type": "提供商類型",
+    "provider_model": "模型",
+    "provider_api_key": "API 金鑰",
+    "provider_base_url": "基礎 URL",
+    "security_config": "安全設定:",
+    "allowed_directories": "允許的目錄",
+    "blocked_commands": "封鎖的命令"
+  },
+  "task": {
+    "running": "執行任務: {{task}}",
+    "completed": "任務完成: {{task}}",
+    "failed": "任務失敗: {{task}}",
+    "no_task": "未指定要執行的任務",
+    "task_timeout": "任務逾時: {{task}}",
+    "task_cancelled": "任務已取消: {{task}}"
+  },
+  "search": {
+    "searching": "搜尋中: {{query}}",
+    "search_completed": "搜尋完成",
+    "search_failed": "搜尋失敗",
+    "no_results": "找不到結果",
+    "results_found": "找到 {{count}} 個結果"
+  },
+  "memory": {
+    "loading": "載入記憶體...",
+    "saving": "儲存記憶體...",
+    "loaded": "記憶體已載入",
+    "saved": "記憶體已儲存",
+    "cleared": "記憶體已清除",
+    "not_found": "找不到記憶體"
+  },
+  "provider": {
+    "connecting": "正在連接到 {{provider}}...",
+    "connected": "已連接到 {{provider}}",
+    "disconnected": "已從 {{provider}} 斷開連接",
+    "connection_failed": "連接 {{provider}} 失敗",
+    "invalid_response": "{{provider}} 回應無效",
+    "rate_limited": "{{provider}} 請求頻率受限",
+    "quota_exceeded": "{{provider}} 配額已超過",
+    "api_key_required": "需要 {{provider}} API 金鑰",
+    "api_error": "{{provider}} API 錯誤: {{error}}",
+    "streaming_error": "{{provider}} 串流錯誤: {{error}}"
+  },
+  "tools": {
+    "command_blocked": "基於安全考量，命令已被封鎖: {{command}}",
+    "access_denied": "拒絕存取: 路徑 {{path}} 不在允許的目錄中",
+    "file_not_found": "檔案不存在: {{path}}",
+    "directory_not_found": "目錄不存在: {{path}}",
+    "not_directory": "路徑不是目錄: {{path}}",
+    "content_required": "寫入操作需要內容",
+    "file_written": "檔案寫入成功: {{path}}",
+    "deleted_successfully": "刪除成功: {{path}}",
+    "directory_created": "目錄建立成功: {{path}}",
+    "unsupported_action": "不支援的檔案操作: {{action}}",
+    "tool_not_found": "找不到工具: {{name}}",
+    "command_timeout": "命令逾時 {{timeout}}ms",
+    "local_network_blocked": "禁止存取本地/私人網路"
+  },
+  "ui": {
+    "tips_header": "使用技巧：",
+    "tip_1": "提出問題、編輯檔案或執行命令",
+    "tip_2": "描述得越具體，效果越好",
+    "tip_3": "輸入 /help 獲取更多資訊",
+    "tip_4": "按 Ctrl+C 兩次退出",
+    "start_chatting": "開始聊天（輸入訊息或命令）："
+  },
+  "errors": {
+    "unhandled_rejection": "未處理的 Promise 拒絕:",
+    "uncaught_exception": "未捕獲的異常:",
+    "validation_error": "驗證錯誤",
+    "config_error": "設定錯誤",
+    "provider_error": "提供商錯誤",
+    "tool_error": "工具錯誤"
+  }
+}
