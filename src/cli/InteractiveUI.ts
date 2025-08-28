@@ -11,6 +11,8 @@ export class InteractiveUI {
   private configManager: ConfigManager;
   private i18n: I18n;
   private logger: Logger;
+  private ctrlCCount: number = 0;
+  private ctrlCTimer: NodeJS.Timeout | null = null;
 
   constructor() {
     this.configManager = ConfigManager.getInstance();
@@ -22,7 +24,37 @@ export class InteractiveUI {
     this.showHeader();
     this.showTips();
     this.showFooter();
+    
+    // 设置Ctrl+C处理
+    this.setupSignalHandlers();
+    
     await this.startChatLoop();
+  }
+
+  private setupSignalHandlers(): void {
+    process.on('SIGINT', () => {
+      this.ctrlCCount++;
+      
+      if (this.ctrlCCount === 1) {
+        const isZh = this.configManager.getLocale().startsWith('zh');
+        console.log(isZh 
+          ? chalk.yellow('\n提示：再次按 Ctrl+C 退出程序') 
+          : chalk.yellow('\nPress Ctrl+C again to exit'));
+        
+        // 重置计数器，3秒后清除
+        this.ctrlCTimer = setTimeout(() => {
+          this.ctrlCCount = 0;
+        }, 3000);
+      } else {
+        // 第二次按Ctrl+C，退出程序
+        if (this.ctrlCTimer) {
+          clearTimeout(this.ctrlCTimer);
+        }
+        console.log(''); // 新行
+        this.showGoodbye();
+        process.exit(0);
+      }
+    });
   }
 
   private showHeader(): void {
@@ -118,8 +150,9 @@ export class InteractiveUI {
         console.log(''); // 添加空行分隔对话
       } catch (error: any) {
         if (error.name === 'ExitPromptError') {
-          // 用户按了 Ctrl+C
-          break;
+          // 用户按了 Ctrl+C，但现在由signal handler处理
+          // 这里不直接退出，让signal handler处理
+          continue;
         }
         throw error;
       }

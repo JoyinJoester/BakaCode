@@ -40,7 +40,23 @@ export class FileMemoryManager extends BaseMemoryManager {
         }
       }
     } catch (error) {
-      console.warn('Failed to load memory from file:', error);
+      if (error instanceof SyntaxError) {
+        console.warn('Memory file is corrupted, creating backup and starting fresh...');
+        try {
+          // Create backup of corrupted file
+          const backupFile = this.memoryFile + '.backup.' + Date.now();
+          await fs.copy(this.memoryFile, backupFile);
+          console.warn(`Corrupted file backed up to: ${backupFile}`);
+          
+          // Initialize with empty memory
+          this.conversations.clear();
+          await this.saveToFile();
+        } catch (backupError) {
+          console.warn('Failed to create backup:', backupError);
+        }
+      } else {
+        console.warn('Failed to load memory from file:', error);
+      }
     }
   }
 
