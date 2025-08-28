@@ -6,6 +6,8 @@ import { Message, ConversationContext } from '../types';
 export class FileMemoryManager extends BaseMemoryManager {
   private memoryFile: string;
   private conversations: Map<string, ConversationContext> = new Map();
+  private saveTimeout: NodeJS.Timeout | null = null;
+  private isSaving: boolean = false;
 
   constructor(memoryFile?: string, maxContextLength?: number) {
     super(maxContextLength);
@@ -50,7 +52,7 @@ export class FileMemoryManager extends BaseMemoryManager {
           
           // Initialize with empty memory
           this.conversations.clear();
-          await this.saveToFile();
+          this.debouncedSave();
         } catch (backupError) {
           console.warn('Failed to create backup:', backupError);
         }
@@ -61,7 +63,10 @@ export class FileMemoryManager extends BaseMemoryManager {
   }
 
   private async saveToFile(): Promise<void> {
+    if (this.isSaving) return;
+    
     try {
+      this.isSaving = true;
       await fs.ensureDir(path.dirname(this.memoryFile));
       
       const data = {
@@ -72,7 +77,18 @@ export class FileMemoryManager extends BaseMemoryManager {
       await fs.writeJson(this.memoryFile, data, { spaces: 2 });
     } catch (error) {
       console.warn('Failed to save memory to file:', error);
+    } finally {
+      this.isSaving = false;
     }
+  }
+
+  private debouncedSave(): void {
+    if (this.saveTimeout) {
+      clearTimeout(this.saveTimeout);
+    }
+    this.saveTimeout = setTimeout(() => {
+      this.saveToFile();
+    }, 100); // 延迟100ms保存，避免频繁操作
   }
 
   async addMessage(conversationId: string, message: Message): Promise<void> {
@@ -105,7 +121,7 @@ export class FileMemoryManager extends BaseMemoryManager {
       }
     }
 
-    await this.saveToFile();
+    this.debouncedSave();
   }
 
   async getMessages(conversationId: string, limit?: number): Promise<Message[]> {
@@ -136,7 +152,7 @@ export class FileMemoryManager extends BaseMemoryManager {
     };
     
     this.conversations.set(id, conversation);
-    await this.saveToFile();
+    this.debouncedSave();
     return id;
   }
 
@@ -147,11 +163,11 @@ export class FileMemoryManager extends BaseMemoryManager {
 
   async deleteConversation(conversationId: string): Promise<void> {
     this.conversations.delete(conversationId);
-    await this.saveToFile();
+    this.debouncedSave();
   }
 
   async clearAll(): Promise<void> {
     this.conversations.clear();
-    await this.saveToFile();
+    this.debouncedSave();
   }
 }

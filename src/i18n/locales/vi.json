@@ -101,7 +101,7 @@
     "tip_1": "Đặt câu hỏi, chỉnh sửa file, hoặc chạy lệnh.",
     "tip_2": "Hãy cụ thể để có kết quả tốt nhất.",
     "tip_3": "Gõ /help để biết thêm thông tin.",
-    "tip_4": "Nhấn Ctrl+C hai lần để thoát.",
+    "tip_4": "Nhấn Ctrl+C để thoát.",
     "start_chatting": "Bắt đầu chat (gõ tin nhắn hoặc lệnh):"
   },
   "errors": {

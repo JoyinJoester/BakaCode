@@ -101,7 +101,7 @@
     "tip_1": "Ask questions, edit files, or run commands.",
     "tip_2": "Be specific for the best results.",
     "tip_3": "Type /help for more information.",
-    "tip_4": "Press Ctrl+C twice to exit.",
+    "tip_4": "Press Ctrl+C to exit.",
     "start_chatting": "Start chatting (type a message or command):"
   },
   "errors": {
