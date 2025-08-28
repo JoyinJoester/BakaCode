@@ -1,0 +1,115 @@
+{
+  "common": {
+    "success": "Thành công",
+    "error": "Lỗi", 
+    "warning": "Cảnh báo",
+    "info": "Thông tin",
+    "yes": "Có",
+    "no": "Không",
+    "cancel": "Hủy",
+    "confirm": "Xác nhận",
+    "loading": "Đang tải...",
+    "done": "Hoàn thành"
+  },
+  "cli": {
+    "app_description": "BakaCode - CLI AI Agent mạnh mẽ cho Node.js",
+    "chat_description": "Bắt đầu phiên chat tương tác",
+    "run_description": "Chạy một tác vụ đơn", 
+    "websearch_description": "Tìm kiếm web sử dụng Bing API",
+    "config_description": "Quản lý cài đặt cấu hình",
+    "version_description": "Hiển thị thông tin phiên bản"
+  },
+  "chat": {
+    "session_started": "Phiên chat đã bắt đầu. Gõ \"exit\" để thoát, \"help\" để xem lệnh.",
+    "session_ended": "Phiên chat đã kết thúc.",
+    "prompt": "Bạn:",
+    "assistant": "Trợ lý:",
+    "help_title": "Các lệnh có sẵn:",
+    "help_exit": "exit - Thoát phiên chat",
+    "help_clear": "clear - Xóa màn hình", 
+    "help_conversations": "/conversations list - Liệt kê tất cả cuộc hội thoại",
+    "help_conversations_delete": "/conversations delete <id> - Xóa cuộc hội thoại",
+    "help_conversations_switch": "/conversations switch <id> - Chuyển đến cuộc hội thoại",
+    "enter_message": "Vui lòng nhập tin nhắn",
+    "conversation_loaded": "Đã tải cuộc hội thoại: {{id}}",
+    "conversation_created": "Bắt đầu cuộc hội thoại mới: {{id}}",
+    "using_provider": "Sử dụng {{provider}} với mô hình {{model}}"
+  },
+  "config": {
+    "updated": "Đã cập nhật {{key}} thành {{value}}",
+    "bing_key_updated": "Đã cập nhật API key Bing",
+    "provider_type_invalid": "Loại nhà cung cấp phải là \"ollama\" hoặc \"openai\"",
+    "unknown_key": "Khóa cấu hình không xác định: {{key}}",
+    "unknown_provider_key": "Khóa cấu hình nhà cung cấp không xác định: {{key}}",
+    "failed_to_set": "Không thể thiết lập cấu hình: {{error}}",
+    "failed_to_get": "Không thể lấy cấu hình: {{error}}",
+    "failed_to_show": "Không thể hiển thị cấu hình: {{error}}",
+    "reset_not_implemented": "Đặt lại cấu hình chưa được triển khai.",
+    "reset_instruction": "Để đặt lại cấu hình, xóa file cấu hình tại ~/.bakacode/config.yaml",
+    "show_title": "--- Cấu hình ---",
+    "provider_section": "Nhà cung cấp:",
+    "memory_section": "Bộ nhớ:",
+    "security_section": "Bảo mật:",
+    "environment_section": "Môi trường:",
+    "not_set": "Chưa thiết lập",
+    "hidden": "[ẨN]"
+  },
+  "task": {
+    "executing": "Đang thực thi tác vụ: {{task}}",
+    "completed": "Tác vụ hoàn thành thành công.",
+    "failed": "Không thể thực thi tác vụ: {{error}}",
+    "task_required": "Mô tả tác vụ là bắt buộc. Sử dụng tùy chọn --task.",
+    "executing_tools": "[Đang thực thi công cụ...]"
+  },
+  "search": {
+    "searching": "Đang tìm kiếm: {{query}}",
+    "failed": "Tìm kiếm thất bại: {{error}}",
+    "completed": "Tìm kiếm hoàn thành thành công.",
+    "bing_key_required": "API key Bing chưa được cấu hình. Vui lòng thiết lập biến môi trường BING_API_KEY.",
+    "generating_summary": "Đang tạo tóm tắt AI...",
+    "ai_summary_title": "--- Tóm tắt AI ---",
+    "found_results": "Tìm thấy {{count}} kết quả cho \"{{query}}\":",
+    "related_searches": "Tìm kiếm liên quan:"
+  },
+  "memory": {
+    "conversation_not_found": "Không tìm thấy cuộc hội thoại: {{id}}",
+    "failed_to_load": "Không thể tải bộ nhớ từ file: {{error}}",
+    "failed_to_save": "Không thể lưu bộ nhớ vào file: {{error}}"
+  },
+  "provider": {
+    "api_key_required": "Cần API key {{provider}}",
+    "api_error": "Lỗi API {{provider}}: {{error}}",
+    "streaming_error": "Lỗi streaming {{provider}}: {{error}}"
+  },
+  "tools": {
+    "command_blocked": "Lệnh bị chặn vì lý do bảo mật: {{command}}",
+    "access_denied": "Truy cập bị từ chối: Đường dẫn {{path}} không nằm trong thư mục được phép",
+    "file_not_found": "File không tồn tại: {{path}}",
+    "directory_not_found": "Thư mục không tồn tại: {{path}}",
+    "not_directory": "Đường dẫn không phải là thư mục: {{path}}",
+    "content_required": "Nội dung là bắt buộc cho hành động ghi",
+    "file_written": "File được ghi thành công: {{path}}",
+    "deleted_successfully": "Xóa thành công: {{path}}",
+    "directory_created": "Thư mục đã được tạo: {{path}}",
+    "unsupported_action": "Hành động file không được hỗ trợ: {{action}}",
+    "tool_not_found": "Không tìm thấy công cụ: {{name}}",
+    "command_timeout": "Lệnh hết thời gian chờ sau {{timeout}}ms",
+    "local_network_blocked": "Truy cập vào mạng cục bộ/riêng tư bị chặn"
+  },
+  "ui": {
+    "tips_header": "Mẹo để bắt đầu:",
+    "tip_1": "Đặt câu hỏi, chỉnh sửa file, hoặc chạy lệnh.",
+    "tip_2": "Hãy cụ thể để có kết quả tốt nhất.",
+    "tip_3": "Gõ /help để biết thêm thông tin.",
+    "tip_4": "Nhấn Ctrl+C hai lần để thoát.",
+    "start_chatting": "Bắt đầu chat (gõ tin nhắn hoặc lệnh):"
+  },
+  "errors": {
+    "unhandled_rejection": "Promise rejection không được xử lý:",
+    "uncaught_exception": "Exception không được bắt:",
+    "validation_error": "Lỗi validation",
+    "config_error": "Lỗi cấu hình",
+    "provider_error": "Lỗi nhà cung cấp",
+    "tool_error": "Lỗi công cụ"
+  }
+}

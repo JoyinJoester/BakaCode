@@ -24,7 +24,7 @@ export class I18n {
   private loadMessages(): void {
     try {
       // Load messages for supported locales
-      const locales = ['en', 'zh-CN', 'zh-TW', 'ja', 'ko'];
+      const locales = ['en', 'zh-CN', 'zh-TW', 'ja', 'ko', 'vi'];
       
       for (const locale of locales) {
         try {
@@ -53,7 +53,7 @@ export class I18n {
   }
 
   public getSupportedLocales(): string[] {
-    return ['en', 'zh-CN', 'zh-TW', 'ja', 'ko'];
+    return ['en', 'zh-CN', 'zh-TW', 'ja', 'ko', 'vi'];
   }
 
   public t(key: string, interpolations: Record<string, string> = {}): string {
@@ -103,6 +103,7 @@ export class I18n {
     if (locale.includes('zh_TW') || locale.includes('zh-TW')) return 'zh-TW';
     if (locale.includes('ja')) return 'ja';
     if (locale.includes('ko')) return 'ko';
+    if (locale.includes('vi') || locale.includes('VN')) return 'vi';
     
     return 'en';
   }
