@@ -7,6 +7,7 @@ import { RunCommand } from './RunCommand';
 import { WebSearchCommand } from './WebSearchCommand';
 import { ConfigCommand } from './ConfigCommand';
 import { LanguageCommand } from './LanguageCommand';
+import { EnhancedAgentCommand } from './EnhancedAgentCommand';
 import { InteractiveUI } from './InteractiveUI';
 import { Logger } from '../utils';
 import { I18n } from '../i18n/I18n';
@@ -43,6 +44,7 @@ RunCommand.register(program);
 WebSearchCommand.register(program);
 ConfigCommand.register(program);
 LanguageCommand.register(program);
+EnhancedAgentCommand.register(program);
 
 // Global error handler
 process.on('unhandledRejection', (reason, promise) => {
@@ -61,7 +63,7 @@ process.on('uncaughtException', (error) => {
 const args = process.argv.slice(2);
 const hasCommand = args.some(arg => 
   !arg.startsWith('-') && 
-  ['chat', 'run', 'websearch', 'config', 'lang', 'language', 'help'].includes(arg)
+  ['chat', 'run', 'websearch', 'config', 'lang', 'language', 'agent', 'auto', 'help'].includes(arg)
 );
 
 const shouldShowInteractiveUI = args.length === 0 || 
@@ -92,7 +94,7 @@ if (shouldShowInteractiveUI) {
       const agent = new Agent();
       agent.startNewConversation()
         .then(() => agent.sendMessage(chatInput))
-        .then((response) => {
+        .then((response: any) => {
           console.log(chalk.blue('🤖 BakaCode:'));
           console.log(response.content);
         })

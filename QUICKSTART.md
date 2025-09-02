@@ -12,7 +12,7 @@
 
 1. **克隆仓库**
    ```bash
-   git clone <your-repository-url>
+   git clone https://github.com/JoyinJoester/BakaCode.git
    cd BakaCode
    ```
 

@@ -179,7 +179,7 @@ export class ChatCommand {
             console.log(chalk.yellow('No conversations found.'));
           } else {
             console.log(chalk.blue('\nConversations:'));
-            conversations.forEach((conv) => {
+            conversations.forEach((conv: any) => {
               const current = conv.id === agent.getCurrentConversationId() ? chalk.green('(current)') : '';
               console.log(`  ${conv.id} - ${conv.metadata.provider}/${conv.metadata.model} - ${conv.metadata.updated.toLocaleString()} ${current}`);
             });

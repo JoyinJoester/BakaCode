@@ -52,6 +52,21 @@ export class ConfigCommand {
       .action(async (options) => {
         await this.configurePrompt(options);
       });
+
+    configCmd
+      .command('model')
+      .alias('models')
+      .description('选择 Ollama 本地模型')
+      .action(async () => {
+        await this.selectModel();
+      });
+
+    configCmd
+      .command('edit')
+      .description('编辑配置文件（Windows用记事本，Unix用vim）')
+      .action(async () => {
+        await this.editWithVim();
+      });
   }
 
   private static async set(key: string, value: string): Promise<void> {
@@ -287,6 +302,172 @@ export class ConfigCommand {
 
     } catch (error: any) {
       logger.error('Failed to configure prompt:', error.message);
+    }
+  }
+
+  private static async selectModel(): Promise<void> {
+    const logger = Logger.getInstance();
+    const config = ConfigManager.getInstance();
+    const inquirer = require('inquirer');
+    const axios = require('axios');
+
+    try {
+      // Get current provider config
+      const providerConfig = config.getProviderConfig();
+      
+      if (providerConfig.type !== 'ollama') {
+        logger.warn('Model selection is only available for Ollama provider.');
+        console.log('Current provider:', providerConfig.type);
+        console.log('To switch to Ollama, run: bakac config set provider.type ollama');
+        return;
+      }
+
+      // Fetch available models from Ollama
+      console.log('🔍 Fetching available Ollama models...');
+      
+      try {
+        const response = await axios.get(`${providerConfig.baseUrl.replace('/api', '')}/api/tags`);
+        const models = response.data.models || [];
+        
+        if (models.length === 0) {
+          logger.warn('No Ollama models found. Please install some models first.');
+          console.log('Example: ollama pull llama2');
+          return;
+        }
+
+        const modelChoices = models.map((model: any) => ({
+          name: `${model.name} (${(model.size / 1024 / 1024 / 1024).toFixed(1)}GB)`,
+          value: model.name,
+          short: model.name
+        }));
+
+        // Add current model if not in list
+        if (!models.find((m: any) => m.name === providerConfig.model)) {
+          modelChoices.unshift({
+            name: `${providerConfig.model} (current - not found locally)`,
+            value: providerConfig.model,
+            short: providerConfig.model
+          });
+        }
+
+        const answer = await inquirer.prompt([
+          {
+            type: 'list',
+            name: 'selectedModel',
+            message: 'Select an Ollama model:',
+            choices: modelChoices,
+            default: providerConfig.model
+          }
+        ]);
+
+        if (answer.selectedModel !== providerConfig.model) {
+          await this.set('provider.model', answer.selectedModel);
+          console.log(`✅ Model changed to: ${answer.selectedModel}`);
+        } else {
+          console.log('✓ Model unchanged');
+        }
+
+      } catch (fetchError: any) {
+        logger.error('Failed to fetch Ollama models:', fetchError.message);
+        console.log('Make sure Ollama is running and accessible at:', providerConfig.baseUrl);
+      }
+
+    } catch (error: any) {
+      logger.error('Failed to select model:', error.message);
+    }
+  }
+
+  private static async editWithVim(): Promise<void> {
+    const logger = Logger.getInstance();
+    const config = ConfigManager.getInstance();
+    const { spawn } = require('child_process');
+    const path = require('path');
+    const os = require('os');
+
+    try {
+      const configPath = path.join(os.homedir(), '.bakacode', 'config.yaml');
+      
+      console.log('🔧 Opening configuration file...');
+      console.log('File:', configPath);
+      
+      // Check if config file exists
+      const fs = require('fs');
+      if (!fs.existsSync(configPath)) {
+        logger.warn('Configuration file does not exist yet.');
+        console.log('Creating default configuration...');
+        // Trigger config creation by accessing it
+        config.getConfig();
+      }
+
+      // Determine the best editor for the platform
+      let editorCommand: string;
+      let editorArgs: string[];
+      
+      if (os.platform() === 'win32') {
+        // On Windows, try notepad first, then vim if available
+        editorCommand = 'notepad';
+        editorArgs = [configPath];
+      } else {
+        // On Unix systems, prefer vim
+        editorCommand = 'vim';
+        editorArgs = [configPath];
+      }
+
+      console.log(`📝 Using ${editorCommand} to edit configuration...`);
+
+      // Spawn editor process
+      const editor = spawn(editorCommand, editorArgs, {
+        stdio: 'inherit',
+        shell: true
+      });
+
+      editor.on('close', (code: number | null) => {
+        if (code === 0 || code === null) {
+          console.log('✅ Configuration file saved successfully');
+          console.log('💡 Note: Restart BakaCode for changes to take effect');
+        } else {
+          logger.error(`${editorCommand} exited with code ${code}`);
+        }
+      });
+
+      editor.on('error', (error: any) => {
+        if (error.code === 'ENOENT') {
+          if (editorCommand === 'notepad') {
+            logger.error('notepad is not available');
+          } else {
+            logger.error(`${editorCommand} is not installed or not in PATH`);
+          }
+          
+          // Fallback: try to open with default system editor
+          console.log('Trying to open with default system editor...');
+          const { exec } = require('child_process');
+          
+          if (os.platform() === 'win32') {
+            exec(`start "" "${configPath}"`, (err: any) => {
+              if (err) {
+                logger.error('Failed to open with default editor');
+                console.log('Please manually edit:', configPath);
+              } else {
+                console.log('✅ Opened with default system editor');
+              }
+            });
+          } else {
+            exec(`xdg-open "${configPath}"`, (err: any) => {
+              if (err) {
+                logger.error('Failed to open with default editor');
+                console.log('Please manually edit:', configPath);
+              } else {
+                console.log('✅ Opened with default system editor');
+              }
+            });
+          }
+        } else {
+          logger.error(`Failed to open ${editorCommand}:`, error.message);
+        }
+      });
+
+    } catch (error: any) {
+      logger.error('Failed to edit configuration:', error.message);
     }
   }
 }
